@@ -41,3 +41,16 @@ All notable changes to the **Experiment Analytics Platform** are documented in t
 - `chore: initialize project structure`
 - `docs: add project development plan`
 - `feat: implement database schema`
+
+## [0.2.0] - 2026-11-12 (Milestone 2: Master Data, Audience Generation & Randomization Engine)
+
+### Features Added
+- Implemented `services/experiment_service.py` enforcing exact forward lifecycle transitions, predeclared parameter locks, MDE scale validation by metric type, and single Control variant validation.
+- Implemented `services/randomization.py` for deterministic user-to-variant assignment and Chi-square Sample Ratio Mismatch (SRM) detection (`scipy.stats.chisquare`).
+- Implemented Steps 1-5 of the synthetic generator (`generator/master_data.py`, `generator/audience_generator.py`, `generator/assignment_generator.py`) supporting both Starter (2,500 eligible users / 5 experiments) and Full (50,000 eligible users / 10 experiments) modes.
+- Added automated test suite `tests/test_randomization.py`.
+
+### Related Git Commits
+- `feat: add synthetic data generator`
+- `feat: implement randomized assignments`
+- `feat: implement randomization validation`
