@@ -1,0 +1,11 @@
+# AI Prompt History
+
+This file records the development prompts and architectural refinements used to build the **Experiment Analytics Platform**, in accordance with project transparency and confidentiality guidelines (without reproducing confidential assessment problem statements verbatim).
+
+| Entry | Date | AI Tool | Milestone / Purpose | Summary of Prompt & Technical Direction |
+| :-: | :--- | :--- | :--- | :--- |
+| 1 | 2026-11-11 | Gemini | Initial Blueprint | Establish modular architecture, 13-step synthetic generator design, randomization and statistical engines, 5 negative anomaly scenarios, and 8-milestone execution plan. |
+| 2 | 2026-11-12 | Gemini | Architecture Refinement 1 | Confirm Starter (2,500 eligible users / 5 experiments) and Full (50,000 eligible users / 10 experiments) scales, isolate ground-truth labels to `data/ground_truth/` files, resolve `Experiment` <-> `MetricDefinition` circularity, and enforce `PRAGMA foreign_keys = ON`. |
+| 3 | 2026-11-12 | Gemini | Architecture Refinement 2 | Make `metric_definitions` and `experiment_results` 100% append-only, remove `ground_truth_reference` from `experiment_issues`, add composite foreign keys, specify pooled two-proportion z-test + Newcombe-Wilson 95% CI, and designate `database/schema.sql` as canonical DDL. |
+| 4 | 2026-11-12 | Gemini | Architecture Refinement 3 | Derive metric validity via `LEAD(effective_from)`, add `analysis_run_id` to `experiment_results`, enforce single `Control` variant via partial unique index and composite FK, add predeclared `minimum_detectable_effect`, and separate `INSUFFICIENT_GUARDRAIL_DATA`. |
+| 5 | 2026-11-12 | Gemini | Architecture Refinement 4 & Final Approval | Lock predeclared parameters (`minimum_detectable_effect`, `significance_level`, `primary_metric_code`) after `Draft` or once results exist, enforce exact forward lifecycle transitions (`Draft -> Ready -> Running <-> Paused -> Completed -> Archived`), use `variant_id` in `result_id`, validate MDE scale by metric type, enforce stored `statistical_significance` consistency via trigger, and verify `SQLite >= 3.25.0` at startup. Approved start of Milestone 1. |
